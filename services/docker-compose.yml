@@ -1,0 +1,17 @@
+version: '2'
+services:
+    service_1:
+        image: java_service_1
+        restart: always
+        ports:
+            - 8080
+        environment:
+            SERVICE_NAME: service_1
+
+    service_2:
+        image: php_service_2
+        restart: always
+        ports:
+            - 80
+        environment:
+            SERVICE_80_NAME: service_2
