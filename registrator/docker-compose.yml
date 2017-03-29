@@ -1,9 +1,27 @@
 version: '2'
 services:
-  registrator:
+  registrator1:
     image: gliderlabs/registrator
     restart: always
     network_mode: "host"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     command: "-ip 127.0.0.1 zookeeper://127.0.0.1:2181/services"
+
+  registrator2:
+    image: gliderlabs/registrator
+    restart: always
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: "-ip 127.0.0.1 zookeeper://127.0.0.1:2182/services"
+
+  registrator3:
+    image: gliderlabs/registrator
+    restart: always
+    network_mode: "host"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: "-ip 127.0.0.1 zookeeper://127.0.0.1:2183/services"
+
+
