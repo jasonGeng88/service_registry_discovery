@@ -2,6 +2,7 @@
 **/.mvn
 **/*.jar
 **/*.jar.original
+**/*.log
 
 ### npm ###
 **/node_modules
