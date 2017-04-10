@@ -6,13 +6,13 @@ var cache = require('./local-storage');
 var constants = require('../constants');
 var debug = require('debug')('dev:discovery');
 
-var client = zookeeper.createClient(constants.ZK_HOSTS);
+var zkClient = zookeeper.createClient(constants.ZK_HOSTS);
 cache.setItem(constants.ROUTE_KEY, {});
 
-function discovery() {
-    client.connect();
+function connect() {
+    zkClient.connect();
 
-    client.once('connected', function() {
+    zkClient.once('connected', function() {
         console.log('Connected to ZooKeeper.');
         getServices(constants.SERVICE_ROOT_PATH);
     });
@@ -22,7 +22,7 @@ function discovery() {
  * 获取服务列表
  */
 function getServices(path) {
-    client.getChildren(
+    zkClient.getChildren(
         path,
         function(event) {
             console.log('Got Services watcher event: %s', event);
@@ -50,7 +50,7 @@ function getServices(path) {
  * 获取服务节点信息（IP,Port）
  */
 function getService(path) {
-    client.getChildren(
+    zkClient.getChildren(
         path,
         function(event) {
             console.log('Got Serivce watcher event: %s', event);
@@ -76,4 +76,4 @@ function getService(path) {
     );
 }
 
-module.exports = discovery;
+module.exports = connect;
