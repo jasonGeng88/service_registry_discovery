@@ -7,8 +7,10 @@
 var app = require('../app');
 var http = require('http');
 
+var port = 8080;
+
 //单进程运行
-http.createServer(app).listen(8080);
+http.createServer(app).listen(port);
 
 //多进程运行
 // var cluster = require('cluster');
@@ -22,8 +24,8 @@ http.createServer(app).listen(8080);
 //         cluster.fork();
 //     }
 
-//     cluster.on('listening',function(worker,address){
-//         console.log('listening: worker ' + worker.process.pid +', Address: '+address.address+":"+address.port);
+//     cluster.on('listening', function(worker, address) {
+//         console.log('listening: worker ' + worker.process.pid + ', Address: ' + address.address + ":" + address.port);
 //     });
 
 //     cluster.on('exit', function(worker, code, signal) {
@@ -31,5 +33,5 @@ http.createServer(app).listen(8080);
 //         cluster.fork();
 //     });
 // } else if (cluster.isWorker) {
-//     http.createServer(app).listen(8080);
+//     http.createServer(app).listen(port);
 // }

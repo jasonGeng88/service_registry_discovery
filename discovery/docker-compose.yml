@@ -1,0 +1,9 @@
+version: '2'
+services:
+    discovery:
+        image: node_discovery
+        restart: always
+        network_mode: "host"
+        environment:
+            SERVICE_IGNORE: "true"
+            DEBUG: "dev:"

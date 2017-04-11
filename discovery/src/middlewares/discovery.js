@@ -9,7 +9,8 @@ var debug = require('debug')('dev:discovery');
 var zkClient = zookeeper.createClient(constants.ZK_HOSTS);
 cache.setItem(constants.ROUTE_KEY, {});
 
-function discovery() {
+
+function connect() {
     zkClient.connect();
 
     zkClient.once('connected', function() {
@@ -78,4 +79,4 @@ function getService(path) {
     );
 }
 
-module.exports = discovery;
+module.exports = connect;

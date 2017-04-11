@@ -1,8 +1,6 @@
 var proxy = require('http-proxy').createProxyServer({});
-var loadbalance = require('loadbalance')
 var cache = require('../middlewares/local-storage');
 var constants = require("../constants");
-var process = require('process');
 var debug = require('debug')('dev:reserveProxy');
 
 function reverseProxy(req, res, next) {
