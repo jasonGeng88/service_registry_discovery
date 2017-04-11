@@ -5,4 +5,4 @@ WORKDIR ${HOME}
 COPY src/ ${HOME}/
 RUN npm install
 EXPOSE 8080
-ENTRYPOINT ["node", "./bin/www"]
+ENTRYPOINT ["npm", "run", "start"]

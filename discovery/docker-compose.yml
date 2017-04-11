@@ -3,7 +3,12 @@ services:
     discovery:
         image: node_discovery
         restart: always
-        network_mode: "host"
+        ports:
+            - 8080:8080
+        # Mac 下无法对外暴露端口
+        #network_mode: "host"
         environment:
+            # 向注册中心忽略其暴露的端口
             SERVICE_IGNORE: "true"
-            DEBUG: "dev:"
+            # 调试日志
+            DEBUG: "dev:*"
